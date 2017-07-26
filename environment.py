@@ -1,13 +1,17 @@
 from roadmap import RoadMap
 from vehicle import Vehicle
+from ant import Ant
 
 
 class Environment:
 
-    def __init__(self, n, k):
+    def __init__(self, n, k, flag):
         self.roadmap = RoadMap(n)
-        self.vehicles = [Vehicle() for i in range(k)]
-        self.time = 0
+        if flag:
+            self.vehicles = [Vehicle() for i in range(k)]
+            self.time = 0
+        else:
+            self.ant = [Ant() for i in range(k)]
 
     def clock(self, h=1):
         self.time = (self.time + h) % 24
